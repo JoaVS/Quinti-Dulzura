@@ -1,0 +1,33 @@
+<h1>Menu</h1>
+<div id="menucardscontainer">
+    <div *ngFor="let item of menuitems|async" class="cardcontainer">
+        <div class="card faces">
+            <div class="imgcontainer">
+                <img src="{{item.image}}">
+            </div>
+            <hr>
+            <h2>{{item.name|titlecase}}</h2>
+            <p>{{item.description}}</p>
+            <div class="moreinfo"><p>Voltea para ver más</p></div>
+        </div>
+        <div class="back faces">
+            <div>
+                <h3>C/u ${{item.precio}}</h3>
+                <hr>
+                <h4>Sabores</h4>
+                <ul>
+                    <li *ngFor="let flavour of item.flavours">{{flavour|titlecase}}</li>
+                </ul>
+            </div>
+            <div *ngIf="item.combos[0] != ''">
+                <h3>Promos</h3>
+                <hr>
+                <ul>
+                    <li *ngFor="let combo of item.combos">{{combo[0]|titlecase}} ${{combo[1]}}</li>
+                </ul>
+            </div>
+            <a [routerLink]="'/contacts'">Ordenar</a>
+        </div>
+    </div>
+</div>
+

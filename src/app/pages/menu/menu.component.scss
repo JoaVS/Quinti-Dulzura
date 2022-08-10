@@ -1,0 +1,172 @@
+@import '../../../variables';
+h1{
+    margin: 0%;
+    text-align: center;
+    text-decoration: underline;
+    color: $dark;
+    font-family: $font-default;
+}
+#menucardscontainer{
+    min-height: 80vh;
+    width: 90%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    .cardcontainer{
+        display: inline;
+        position: relative;
+        // margin: 3%;
+        // width: 20%;
+        width: 90%;
+        // height: 60vh;
+        height: 70vh;
+        margin: 12.5% 0%;
+        .faces{
+            position: absolute;
+            backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
+            border: 5px solid $dark;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 1s;
+        }
+        .card{
+            background-image: linear-gradient($primary 80%, $primary-dark);
+            transform: perspective(500px) rotateY(0deg);
+            transform-style: preserve-3d;
+            display: flex;
+            flex-direction: column;
+            .imgcontainer{
+                position: relative;
+                width: 100%;
+                height: 40%;
+                overflow: hidden;
+                img{
+                    position: relative;
+                    width: 100%;
+                    min-height: 100%;
+                    transform: translate(0px, -5%);
+                }
+            }
+            .imgcontainer:before{
+                content: '';
+                position: absolute;
+                left: -50px;
+                bottom: -10px;
+                height: 25%;
+                width: 125%;
+                background-image: linear-gradient(transparent, $primary 75%);
+                z-index: 1;
+                filter: blur(5px);
+            }
+            hr{
+                width: 90%;
+                border: 1.5px solid aliceblue;
+                background-color: aliceblue;
+            }
+            h2{
+                text-align: center;
+                text-decoration: underline;
+                color: $dark;
+                font-family: $font-default;
+            }
+            p{
+                justify-self: center;
+                text-align: center;
+                color: $dark;
+                font-size: larger;
+                font-weight: bold;
+                font-family: $font-default;
+                font-size: $fontsize-c-mx;
+                margin: 1% 5%;
+                flex-grow: 1;
+            }
+            .moreinfo{
+                width: 100%;
+                position: absolute;
+                bottom: 5%;
+                margin: 0%;
+                p{
+                    font-size: x-large;
+                    font-weight: bold;
+                }
+            }
+        }
+        .back{
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            transform: perspective(500px) rotateY(180deg);
+            background-color: $primary-darker;
+            div{
+                width: 90%;
+                h3{
+                    font-size: $fontsize-c-x;;
+                    margin: 1%;
+                }
+                h4{
+                    font-size: $fontsize-c-xs;
+                }
+                hr{
+                    margin: 0%;
+                    padding: 0%;
+                }
+                ul{
+                    li{
+                        padding: 0%;
+                        font-size: $fontsize-c-mx;
+                    }
+                }
+            }
+            a{
+                position: absolute;
+                bottom: 5%;
+                font-size: x-large;
+                color: aliceblue;
+            }
+        }
+    }
+    .cardcontainer:hover{
+        .card{
+            transform: rotateY(180deg);
+        }
+        .back{
+            transform: rotateY(360deg);
+        }
+    }
+}
+@media only screen and (min-width: 768px) {
+    #menucardscontainer{
+        .cardcontainer{
+            width: 25%;
+            height: 70vh;
+            margin: 3%;
+            .card{
+                p{
+                    font-size: 1.15vw;
+                }
+            }
+            .back{
+                .back{
+                    div{
+                        h3{
+                            font-size: $fontsize-p-x;
+                        }
+                        h4{
+                            font-size: $fontsize-p-xs;
+                        }
+                    }
+                    ul{
+                        li{
+                            font-size: $fontsize-p-mx;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

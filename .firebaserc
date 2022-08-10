@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "quinti-dulzura": {
+      "hosting": {
+        "quinti_dulzura": [
+          "quinti-dulzura"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "quinti-dulzura"
+  }
+}

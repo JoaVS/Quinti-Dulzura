@@ -1,0 +1,30 @@
+<div id="uploadpage">
+    <form id="uploadform" (ngSubmit)="sumbitForm()" [formGroup]="form">
+        <h1>Subir Item</h1>
+        <div *ngIf="updatingid" class="uploadbtn" (click)="deleteItem()"><p>Eliminar Item</p></div>
+        <div *ngIf="updatingid" class="uploadbtn" (click)="cancelupdate()"><p>Descartar Cambio</p></div>
+        <!-- <input *ngIf="updatingid" type="button" value="Eliminar personaje" class="uploadbtn" (click)="deleteCharacter()">
+        <input *ngIf="updatingid" type="button" value="Descartar cambios" class="uploadbtn" (click)="stopupdating()"> -->
+        <label for="name" class="overtext">Nombre</label><br> 
+        <input type="text" id="name" autocomplete="off" placeholder="Ingresa el nombre..." formControlName="name" class="name" spellcheck="false"><br>
+        <label for="imgupload" class="uploadbtn"><p>Subir Imagen</p></label><br>
+        <label *ngIf="image" class="overtext">Imagen</label><br>
+        <input class="hidden" (change)="catchimage($event)" type="file" accept="image/png,image/jpeg" id="imgupload">
+        <div *ngIf="image" class="image"><img src="{{image}}"></div>
+        <textarea placeholder="Ingresa una descripción..." formControlName="description"></textarea><br>
+        <label for="flavours" class="overtext">Sabores</label><br> 
+        <input type="text" placeholder="Ej: banana_manzana_pera" autocomplete="off" spellcheck="false" formControlName="flavours" class="tags" id="flavours"><br>
+        <label for="precio" class="overtext">Precio</label><br> 
+        <input type="number" placeholder="Ingresa el precio" formControlName="precio" class="name" id="precio"><br>
+        <label for="combos" class="overtext">Combos</label><br> 
+        <input type="text" placeholder="Ej: 2 unidades $100_5 unidades $500" spellcheck="false" autocomplete="off" formControlName="combos" class="tags" id="combos"><br>
+        <input type="submit" [disabled]="form.invalid" value="Enviar" class="uploadbtn">
+        <div id="iconbox">
+        <!-- <img *ngFor="let item of items$|async" src="{{oc.icon}}" class="icon" (click)="loaditem(item)"> -->
+        <!-- <p>{{form.value|json}}</p> -->
+    </div>
+    <div *ngIf="(items$|async).length >= 1" id="itemcontainer">
+        <div *ngFor="let item of items$|async" (click)="setItem(item)"><img src="{{item.image}}"></div>
+    </div>
+    </form>
+</div>

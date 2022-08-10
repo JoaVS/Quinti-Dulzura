@@ -1,0 +1,33 @@
+@import '../../../variables';
+footer{
+    display: flex;
+    align-items: center;
+    margin-top: 2.5vh;
+    height: 10vh;
+    width: 100%;
+    background-image: linear-gradient($primary-darker,$primary-darkest 30%, $dark 200%);
+    border-top: 5px solid $dark;
+    color: aliceblue;
+    h2{
+        flex-grow: 1;
+        text-align: end;
+        padding: 1%;
+        padding-right: 5%;
+        font-size: $fontsize-c-xs;
+    }
+    ul{
+        font-size: $fontsize-c-m;
+        padding-left: 5%;
+    }
+}
+@media only screen and (min-width: 768px){
+    footer{
+        ul{
+            font-size: initial;
+            padding-left: 4%;
+        }
+        h2{
+            font-size: $fontsize-c-xxl;
+        }
+    }
+}
